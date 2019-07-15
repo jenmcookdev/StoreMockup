@@ -1,0 +1,56 @@
+﻿@model IEnumerable<UStoreMVC.Data.EF.Status>
+
+@{
+    ViewBag.Title = "Inventory Status";
+}
+
+<h2 id="inventoryTitle">@ViewBag.Title</h2>
+
+@if (User.IsInRole("Admin") || User.IsInRole("Employee"))
+{
+    <p id="inventoryCreateNew">
+        @Html.ActionLink("Add New Status Type", "Create")
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StatusName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StatusOrder)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Notes)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StatusName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StatusOrder)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Notes)
+            </td>
+
+            @if (User.IsInRole("Admin") || User.IsInRole("Employee"))
+            {
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.StatusID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.StatusID }) 
+
+                    @if (User.IsInRole("Admin"))
+                    {
+                       @:| @Html.ActionLink("Delete", "Delete", new { id = item.StatusID })
+                    }
+                </td>
+            }
+        </tr>
+    }
+    </table>

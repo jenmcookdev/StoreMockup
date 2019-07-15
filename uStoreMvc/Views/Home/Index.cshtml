@@ -1,0 +1,303 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+<aside id="fh5co-hero" class="js-fullheight">
+    <div class="flexslider js-fullheight">
+        <ul class="slides">
+            <li style="background-image: url('/Content/images/product/grassfur.JPG');">
+                <div>
+                    <span class="background-image" role="img" aria-label="horse hair on grass"
+                          longdesc="Picture by Cassie Black of Tulip hair"></span>
+                </div>
+                <div class="container">
+                    <div class="col-md-6 col-md-offset-3 col-md-pull-3 js-fullheight slider-text">
+                        <div class="slider-text-inner">
+                            <div class="desc">
+                                <span class="price">$35</span>
+                                <h2>Fur Ritzy</h2>
+                                <p>For those of exquisite taste that want a bit of country to their urban life, Fur Ritzy is just what you need.</p>
+                                <p>
+                                    <a href="#" class="btn btn-primary add-to-cart btn-outline btn-lg"
+                                       onclick="addToCart(2); return false;">Purchase Now</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li style="background-image: url('/Content/images/product/yellowtanfloor.JPG');">
+                <div>
+                    <span class="background-image" role="img" aria-label="cat fur on carpet"
+                          longdesc="Picture by Lisa Pogue of Reynaldo hair"></span>
+                </div>
+                <div class="container">
+                    <div class="col-md-6 col-md-offset-3 col-md-pull-3 js-fullheight slider-text">
+                        <div class="slider-text-inner">
+                            <div class="desc">
+                                <span class="price">$9</span>
+                                <h2>Almost Invisible</h2>
+                                <p>
+                                    Available in a variety of colors, Almost Invisible can be matched to blend in with your decor.
+                                </p>
+                                <p>
+                                    <a href="#" class="btn btn-primary add-to-cart btn-outline btn-lg"
+                                       onclick="addToCart(3); return false;">Purchase Now</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li style="background-image: url('/Content/images/product/pilewithbrushes.JPG');">
+                <div>
+                    <span class="background-image" role="img" aria-label="large pile of german shepherd fur with brushes"
+                          longdesc="Picture by Amy Jones of her German Shepherds fur"></span>
+                </div>
+                <div class="container">
+                    <div class="col-md-6 col-md-offset-3 col-md-pull-3 js-fullheight slider-text">
+                        <div class="slider-text-inner">
+                            <div class="desc">
+                                <span class="price">$55</span>
+                                <h2>Back40</h2>
+                                <p>The Back40 is attuned in multiple complimentary colors for those seeking more variety in life. </p>
+                                <p>
+                                    <a href="#" class="btn btn-primary add-to-cart btn-outline btn-lg"
+                                       onclick="addToCart(4); return false;">Purchase Now</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</aside>
+<div id="fh5co-product">
+    <div class="container">
+        <div class="row animate-box">
+            <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+                <span>The finest quality of furred items</span>
+                <h2>Our Featured Products</h2>
+                <p>We strive to produce high-quality items that everyone can enjoy.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 text-center animate-box">
+                <div class="product">
+                    <div class="product-grid" style="background-image:url('/Content/images/product/bytheboot.JPG');">
+                        <div>
+                            <span class="background-image" role="img" aria-label="large swept up pile of hair"
+                                  longdesc="Picture by Jennifer OShea"></span>
+                        </div>
+                        <div class="inner">
+                            <p>
+                                <a href="#" class="icon">
+                                    <i class="icon-shopping-cart add-to-cart"
+                                       onclick="addToCart(5); return false;"></i>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="desc">
+                        <h3>@Html.ActionLink("By The Boot", "Details", "Products", new { id = 19 }, null)</h3>
+                        <p>By the Boot's exceptional craftsmanship adds an extra touch of earth mixed in to the pet hair heightening the appeal. </p>
+                        <span class="price">$250</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center animate-box">
+                <div class="product">
+                    <div class="product-grid" style="background-image:url('/Content/images/product/lightfurblanket.JPG');">
+                        <div>
+                            <span class="background-image" role="img" aria-label="Light gray blanket coated in pet hair"
+                                  longdesc="Picture by Rena Nolte"></span>
+                        </div>
+                        <!--<span class="sale">Sale: 15% off</span>-->
+                        <div class="inner">
+                            <p>
+                                <a href="#" class="icon">
+                                    <i class="icon-shopping-cart add-to-cart"
+                                       onclick="addToCart(6); return false;"></i>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="desc">
+                        <h3>@Html.ActionLink("Natural Fuzzy Blanket", "Details", "Products", new { id = 20 }, null)</h3>
+                        <p>Snuggle up in our luxury all natural fur blanket.</p>
+                        <span class="price">$70</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center animate-box">
+                <div class="product">
+                    <div class="product-grid" style="background-image:url('/Content/images/product/lantern.JPG');">
+                        <div>
+                            <span class="background-image" role="img" aria-label="large amount of pet hair in a lantern-like bird feeder"
+                                  longdesc="Picture by Melissa Falkiner"></span>
+                        </div>
+                        <div class="inner">
+                            <p>
+                                <a href="#" class="icon">
+                                    <i class="icon-shopping-cart add-to-cart"
+                                       onclick="addToCart(7); return false;"></i>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="desc">
+                        <h3>@Html.ActionLink("Lantern", "Details", "Products", new { id = 21 }, null)</h3>
+                        <p>The Lantern adds a unique way to display the animal fur you purchase for an added touch of class. </p>
+                        <span class="price">$150</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 text-center animate-box">
+                <div class="product">
+                    <div class="product-grid" style="background-image:url('/Content/images/product/Lurking.jpg');">
+                        <div>
+                            <span class="background-image" role="img" aria-label="large pile of pet hair balled up in a corner"
+                                  longdesc="Picture by Rena Nolte"></span>
+                        </div>
+                        <div class="inner">
+                            <p>
+                                <a href="#" class="icon">
+                                    <i class="icon-shopping-cart add-to-cart"
+                                       onclick="addToCart(8); return false;"></i>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="desc">
+                        <h3>@Html.ActionLink("Lurking", "Details", "Products", new { id = 22 }, null)</h3>
+                        <p>Lurking is specially designed to hide behind furniture and in corners where it will be unnoticed.</p>
+                        <span class="price">$110</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center animate-box">
+                <div class="product">
+                    <div class="product-grid" style="background-image:url('/Content/images/product/chips.JPG');">
+                        <div>
+                            <span class="background-image" role="img" aria-label="ruffled chips with pet hair on it"
+                                  longdesc="Picture by Tammy Rogers"></span>
+                        </div>
+                        <div class="inner">
+                            <p>
+                                <a href="#" class="icon">
+                                    <i class="icon-shopping-cart add-to-cart"
+                                       onclick="addToCart(9); return false;"></i>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="desc">
+                        <h3>@Html.ActionLink("Edifurble", "Details", "Products", new { id = 23 }, null)</h3>
+                        <p>Make your next garden party a success with Edifurble!</p>
+                        <span class="price">$3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center animate-box">
+                <div class="product">
+                    <div class="product-grid" style="background-image: url('/Content/images/product/balloffur.JPG'); ">
+                        <div>
+                            <span class="background-image" role="img" aria-label="large pile of pet hair"
+                                  longdesc="Picture by Melissa Falkiner"></span>
+                        </div>
+                        <div class="inner">
+                            <p>
+                                <a href="#" class="icon">
+                                    <i class="icon-shopping-cart add-to-cart"
+                                       onclick="addToCart(10); return false;"></i>
+                                </a><span id="pethairinventory" @*class="notification-counter"*@></span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="desc">
+                        <h3>@Html.ActionLink("Fluffer Puff", "Details", "Products", new { id = 25 }, null)</h3>
+                        <p>This fluff is only for those of discerning taste.</p>
+                        <span class="price">$33</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 text-center animate-box">
+                <div class="product">
+                    <div class="product-grid" style="background-image: url('/Content/images/product/grassfur.JPG'); ">
+                        <div>
+                            <span class="background-image" role="img" aria-label="horse hair on ground"
+                                  longdesc="Picture by Cassie Black of Tulip horse hair"></span>
+                        </div>
+                        <div class="inner">
+                            <p>
+                                <a href="#" class="icon">
+                                    <i class="icon-shopping-cart add-to-cart"
+                                       onclick="addToCart(10); return false;"></i>
+                                </a><span id="pethairinventory"
+                                          @*class="notification-counter"*@></span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="desc">
+                        <h3>@Html.ActionLink("Fur Ritzy", "Details", "Products", new { id = 24 }, null)</h3>
+                        <p>For those of exquisite taste that want a bit of country to their urban life, Fur Ritzy is just what you need.</p>
+                        <span class="price">$35</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center animate-box">
+                <div class="product">
+                    <div class="product-grid" style="background-image: url('/Content/images/product/yellowtanfloor.JPG'); ">
+                        <div>
+                            <span class="background-image" role="img" aria-label="cat fur on carpet"
+                                  longdesc="Picture by Lisa Pogue of Reynaldo hair"></span>
+                        </div>
+                        <div class="inner">
+                            <p>
+                                <a href="#" class="icon">
+                                    <i class="icon-shopping-cart add-to-cart"
+                                       onclick="addToCart(10); return false;"></i>
+                                </a><span id="pethairinventory"
+                                          @*class="notification-counter"*@></span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="desc">
+                        <h3>@Html.ActionLink("Almost Invisible", "Details", "Products", new { id = 26 }, null)</h3>
+                        <p>Available in a variety of colors, Almost Invisible can be matched to blend in with your decor.</p>
+                        <span class="price">$9</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center animate-box">
+                <div class="product">
+                    <div class="product-grid" style="background-image: url('/Content/images/product/BackForty.JPG'); ">
+                        <div>
+                            <span class="background-image" role="img" aria-label="pile of fur with brushes"
+                                  longdesc="Picture by Amy Jones"></span>
+                        </div>
+                        <div class="inner">
+                            <p>
+                                <a href="#" class="icon">
+                                    <i class="icon-shopping-cart add-to-cart"
+                                       onclick="addToCart(10); return false;"></i>
+                                </a><span id="pethairinventory"
+                                          @*class="notification-counter"*@></span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="desc">
+                        <h3>@Html.ActionLink("Back40", "Details", "Products", new { id = 27 }, null)</h3>
+                        <p>The Back40 is attuned in multiple complimentary colors for those seeking more variety in life.</p>
+                        <span class="price">$55</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

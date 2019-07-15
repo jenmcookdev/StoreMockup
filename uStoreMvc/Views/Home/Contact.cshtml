@@ -1,0 +1,117 @@
+﻿@model uStoreMvc.Models.ContactViewModel
+
+@{
+    ViewBag.Title = "Contact Us";
+}
+
+
+<header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner" alt="cat paw on keyboard" longdecs="Photo by Aleksandar Cvetanović from Pexels" style="background-image:url('/Content/images/background/smalleradorable-animal-cat-1440387.jpg');">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center">
+                <div class="display-t">
+                    <div class="display-tc animate-box" data-animate-effect="fadeIn">
+                        <h1 class="h1contactus">@ViewBag.Title</h1>
+                        <h2 class="h2contactus">We welcome customer feedback and of course we are here to answer any questions you may have. We will be in touch with you as soon as possible.</h2>
+
+                        <h2 class="h2contactus">Please note: orders cannot be placed by contacting us here.  Please check out using the cart icon in the upper right.</h2>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div id="fh5co-contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 col-md-push-1 animate-box">
+
+                <div class="fh5co-contact-info" id="companyAddress">
+                    <h3>Contact Information</h3>
+                    <ul>
+                        <li class="address">579 Woofington Ave, <br> Suite 721 Paw Paw WV 25434</li>
+                        <li class="phone"><a href="tel://1234567920">+ 1121 504 0125</a></li>
+                        <li class="email">its_everywhere@bowwowz.com</li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="col-md-6 animate-box" id="contactForm">
+                <h3>Get In Touch</h3>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group col-md-6">
+                        @Html.TextBoxFor(model => model.firstname, new
+                   {
+                       @class = "form-control",
+                       @placeholder = "First Name",
+                   })
+
+                        @Html.ValidationMessageFor(model => model.firstname, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-6">
+                        @Html.TextBoxFor(model => model.lastname, new
+                   {
+                       @class = "form-control",
+                       @placeholder = "Last Name",
+                   })
+
+                        @Html.ValidationMessageFor(model => model.lastname, "", new { @class = "text-danger" })
+                    </div>
+                    @*</div>*@
+
+                    <div class="form-group col-md-6">
+                        @Html.TextBoxFor(model => model.email, new
+                   {
+                       @class = "form-control",
+                       @placeholder = "Email",
+                   })
+
+                        @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group  col-md-12">
+                        @Html.TextBoxFor(model => model.subject, new
+                       {
+                           @class = "form-control",
+                           @placeholder = "Subject",
+                       })
+
+                        @Html.ValidationMessageFor(model => model.subject, "", new { @class = "text-danger" })
+                    </div>
+
+                        <div class="form-group col-md-12">
+                            @Html.TextAreaFor(model => model.message, new
+                       {
+                           @class = "form-control",
+                           @placeholder = "Your Message Here",
+                           @id = "message",
+                           @rows = 8
+                       })
+
+                            @Html.ValidationMessageFor(model => model.message, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <input type="submit"
+                                   value="Send Message"
+                                   class="btn btn-primary pull-right"
+                                   name="submit" />
+                        </div>
+                } <!-- </form> -->
+
+            </div>
+        </div>
+
+    </div>
+</div>
+@section scripts {
+    @*<script src="~/Scripts/jquery.validate.js"></script>*@
+    <script src="~/Content/js/formvalidation.js"></script>
+}

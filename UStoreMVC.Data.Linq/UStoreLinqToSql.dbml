@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="uStore" Class="LinqDALDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\sqlexpress;Initial Catalog=uStore;Integrated Security=True" SettingsObjectName="UStoreMVC.Data.Linq.Properties.Settings" SettingsPropertyName="uStoreConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Categories" Member="LinqCategories">
+    <Type Name="LinqCategory">
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CategoryName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Association Name="Category_Product" Member="LinqProducts" ThisKey="CategoryID" OtherKey="CategoryID" Type="LinqProduct" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Products" Member="LinqProducts">
+    <Type Name="LinqProduct">
+      <Column Name="ProductID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Price" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="UnitsInStock" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="ProductImage" Type="System.String" DbType="VarChar(75)" CanBeNull="true" />
+      <Column Name="StatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="ReferenceURL" Type="System.String" DbType="VarChar(1024)" CanBeNull="true" />
+      <Association Name="Category_Product" Member="LinqCategory" ThisKey="CategoryID" OtherKey="CategoryID" Type="LinqCategory" IsForeignKey="true" />
+      <Association Name="Statuse_Product" Member="LinqStatuse" ThisKey="StatusID" OtherKey="StatusID" Type="LinqStatuse" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Statuses" Member="LinqStatuses">
+    <Type Name="LinqStatuse">
+      <Column Name="StatusID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="StatusName" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="StatusOrder" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="Statuse_Product" Member="LinqProducts" ThisKey="StatusID" OtherKey="StatusID" Type="LinqProduct" />
+    </Type>
+  </Table>
+</Database>

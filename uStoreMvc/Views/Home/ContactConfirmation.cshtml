@@ -1,0 +1,21 @@
+﻿@model uStoreMvc.Models.ContactViewModel
+
+@{
+    ViewBag.Title = "Contact Confirmation";
+}
+
+<div class="row">
+    <div class="col-sm-4">
+        <div class="contact-info">
+            <h2 class="title text-center">@ViewBag.Title</h2>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <!-- Response Message (We received their email)-->
+        <h2>
+            <!-- can use <p> or anything to display text that user will see -->
+            Thank you for contacting us, @Model.firstname!!! We will get back to you
+            within twenty-four hours.
+        </h2>
+    </div>
+</div>

@@ -1,0 +1,257 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Free HTML5 Website Template by gettemplates.co" />
+    <meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
+    <meta name="author" content="gettemplates.co" />
+    <!--
+    FREE HTML5 TEMPLATE
+    DESIGNED & DEVELOPED by FreeHTML5.co
+    Website: 		http://freehtml5.co/
+    Email: 			info@freehtml5.co
+    Twitter: 		http://twitter.com/fh5co
+    Facebook: 		https://www.facebook.com/fh5co
+     -->
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="~/Content/">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/Content/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Content/images/favicon/favicon-16x16.png">
+    <link href="https://fonts.googleapis.com/css?family=Jacques+Francois+Shadow|Londrina+Shadow|Londrina+Sketch|Ribeye+Marrow&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Calligraffitti|Euphoria+Script|La+Belle+Aurore|Milonga|The+Girl+Next+Door" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amaranth&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Charm|Condiment|Sedgwick+Ave&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bowlby+One+SC|Poller+One&display=swap" rel="stylesheet">
+    <!--Font Awesome-->
+    <link href="~/Content/css/font-awesome.css" rel="stylesheet" />
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="~/Content/css/animate.css">
+    <!-- Icomoon Icon Fonts-->
+    <link rel="stylesheet" href="~/Content/css/icomoon.css">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="~/Content/css/bootstrap.css">
+    <!-- Flexslider  -->
+    <link rel="stylesheet" href="~/Content/css/flexslider.css">
+    <!-- Owl Carousel  -->
+    <link rel="stylesheet" href="~/Content/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Content/css/owl.theme.default.min.css">
+    <!-- Modernizr JS -->
+    <script src="~/Content/js/modernizr-2.6.2.min.js"></script>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <!-- Theme style  -->
+    <link rel="stylesheet" href="~/Content/css/style.css">
+    <!-- jQuery for shopping cart -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="~/Content/css/jencustom.css" rel="stylesheet" />
+    <!-- FOR IE9 below -->
+    <!--[if lt IE 9]>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body id="main">
+
+    <div class="fh5co-loader"></div>
+
+    <div id="page">
+        <nav class="fh5co-nav" role="navigation">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-xs-2">
+                        <div id="fh5co-logo"><h1 class="pagetitle">Fluffy Elegance</h1></div>
+                        <h4 class="pagesubtitle">Shabby Chic Pet Hair Decor</h4>
+                    </div>
+                    <div class="col-md-6 col-xs-6 text-center menu-1" id="mainMenuNav">
+                        <ul>
+                            <li><a href="@Url.Action("Index","Home")">Home</a></li>
+                            <li><a href="@Url.Action("FAQ","Home")">FAQ</a></li>
+                            <li><a href="@Url.Action("Contact","Home")">Contact</a></li>
+                            <li>@Html.ActionLink("Products", "Index", "Products")</li>
+
+                         @if (User.IsInRole("Admin") || User.IsInRole("Employee"))
+                            {
+                                <li>@Html.ActionLink("Categories", "Index", "Categories")</li>
+                                <li>@Html.ActionLink("Status", "Index", "Status")</li>
+                           }
+                        </ul>
+                    </div>
+                    <div class="col-md-3 col-xs-4 text-right hidden-xs menu-2">
+                        <ul>
+                            <li id="cart-button">
+                                <a href="#"><i class="fa fa-shopping-cart"></i> Cart</a>
+                                <span id="cart-notification" class="notification-counter"></span>
+                            </li>
+
+                            <li>@Html.Partial("_LoginPartial")</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+        <!-- render an ErrorMessage for if the email fails to send-->
+        <div class="row">
+            <div class="col-md-12">
+                @if (ViewBag.ErrorMessage != null)
+                {
+                    <h2 class="text-center alert alert-danger">
+                        @ViewBag.ErrorMessage
+                    </h2>
+                }
+            </div>
+        </div>
+        <div class="mainContent">
+            @RenderBody()
+        </div>
+        <footer>
+            <!-- Shopping Cart Dialog Window -->
+            <div id="dialog" title="Shopping Cart">
+                <p id="cart-contents">Your Cart is Currently Empty</p>
+            </div>
+
+            <!-- Admin Side Panel -->
+            @if(User.IsInRole("Admin"))
+            { 
+                <div id="adminLink" onclick="openNav()" class="button">
+                    <span class="vertical-text">ADMIN</span>
+                </div>
+                <div id="adminSideNav" class="sidenav">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <a href="@Url.Action("Index","UsersAdmin")">User Admin</a>
+                    <a href="@Url.Action("Index","RolesAdmin")">Roles Admin</a>
+                    @*<a href="#">Manage Items</a>
+                        <a href="#">Manage Descriptions</a>*@
+                </div>
+            }
+            <div class="container" id="footercontainer">
+                <div class="row row-pb-md">
+                    <div class="col-md-6 fh5co-widget" id="footertext">
+                        <h3 class="footercompanyname">Fluffy Elegance</h3>
+                        <p class="footercompanyname">Shabby Chic Pet Hair Decor.  We cater to those of eccentric and exquisite tastes. Our products are a must have for any social elite. Be the envy of all your friends with our high class items.</p>
+                    </div>
+                    <div class="footermenulinks">
+                        <div class="col-md-4 col-sm-6 col-xs-8 col-md-push-1">
+                            <ul class="fh5co-footer-links">
+                                <li class="footmenuli"><a class="footmenulinkdark" href="~/Home/Index">Shop</a></li>
+                                <li class="footmenuli"><a class="footmenulinkdark" href="~/Home/About">About</a></li>
+                                <li class="footmenuli"><a class="footmenulinklight" href="~/Home/FAQ">FAQ</a></li>
+                                <li class="footmenuli"><a class="footmenulinklight" href="~/Home/Contact">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row copyright">
+                    <div class="col-md-12 text-center">
+                        <p class="copyright-row text-center">
+                            <small class="block">&copy; @DateTime.Now.Year For Educational Purposes.  Site has been live since @System.Web.HttpContext.Current.Application["launchTimestamp"]</small>
+                            @*<small class="block">Site has been live since @System.Web.HttpContext.Current.Application["launchTimestamp"]</small><br />*@
+                            <small class="block">&copy; 2016 Free HTML5. All Rights Reserved.</small>
+                            <small class="block">Designed by <a href="http://freehtml5.co/" target="_blank">FreeHTML5.co</a> Demo Images: <a href="http://blog.gessato.com/" target="_blank">Gessato</a> &amp; <a href="http://unsplash.co/" target="_blank">Unsplash</a></small>
+                        </p>
+                        <p>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <div class="gototop js-top">
+        <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+    </div>
+
+    <!-- jQuery -->
+    <script src="~/Content/js/jquery.min.js"></script>
+    <!-- jQuery Easing -->
+    <script src="~/Content/js/jquery.easing.1.3.js"></script>
+    <!-- Bootstrap -->
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <!-- Waypoints -->
+    <script src="~/Content/js/jquery.waypoints.min.js"></script>
+    <!-- Carousel -->
+    <script src="~/Content/js/owl.carousel.min.js"></script>
+    <!-- countTo -->
+    <script src="~/Content/js/jquery.countTo.js"></script>
+    <!-- Flexslider -->
+    <script src="~/Content/js/jquery.flexslider-min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    @RenderSection("scripts", required: false)
+
+    <!-- Main -->
+    <script src="~/Content/js/main.js"></script>
+    <script src="~/Content/js/cart.js"></script>
+
+    <script type="text/javascript">
+        function openNav() {
+            document.getElementById('adminSideNav').style.width = '250px';
+            document.getElementById('main').style.marginLeft = '250px';
+            document.getElementById('adminLink').style.display = 'none';
+        };
+
+        function closeNav() {
+            document.getElementById('adminSideNav').style.width = '0';
+            document.getElementById('main').style.marginLeft = '0';
+            document.getElementById('adminLink').style.display = 'block';
+        };
+
+        $(function () {
+
+            $("#accordion").accordion({
+                collapsible: true
+            });
+
+            $('#dialog').dialog({
+                autoOpen: false,
+                show: {
+                    effect: "fade",
+                    duration: 1000
+                },
+                hide: {
+                    effect: "explode",
+                    duration: 1000
+                }
+            });
+        });
+        $('#cart-button').on('click', function () {
+            $('#dialog').dialog('open');
+        });
+
+
+    </script>
+
+    @*<script>
+            $(function () {
+                $('#mainMenuNav ul li').each(function () {
+                    //if($(this).find('a').attr('href') == window.location.pathname)//this refers to the li.  attr = attribute
+                    //{
+                    var fullAnchor = $(this).find('a').attr('href');
+
+                    var anchorCtrl = fullAnchor.split('/');//splits into a collection
+
+                    console.log('anchorCtrl[1]:' + anchorCtrl[1]);
+
+                    var fullPath = (window.location.pathname + location.search).substr(1);
+                    var pathCtrl = fullPath.split('/');
+
+                    console.log('pathCtrl[0]:' + pathCtrl[0]);
+
+                    if (anchorCtrl[1] == pathCtrl[0]) {
+                        $(this).addClass('selected');//this still refers to the li
+
+                        console.log('add selected');
+                    }//end if
+                    if (anchorCtrl[1] == 'Home' && window.location.pathname != fullAnchor)
+                    {
+                        $(this).removeClass('selected');
+                        console.log('remove selected');
+                    }
+                //}
+                });
+            });
+        </script>*@
+</body>
+</html>

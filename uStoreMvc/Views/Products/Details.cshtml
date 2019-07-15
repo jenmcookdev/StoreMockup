@@ -1,0 +1,86 @@
+﻿@model UStoreMVC.Data.EF.Product
+
+@{
+    ViewBag.Title = Model.Name + "Details";
+}
+
+<div id="productsDetailsContainer">
+    <div id="tdHeader">
+        <h3>
+            @Html.DisplayFor(model => model.Name)
+        </h3>
+    </div>
+    <div id="tdLeft">
+        <p>
+            @*<img src="~/Content/images/product/@Model.ProductImage" alt="@Model.Name" />*@
+            @if (Model.ProductImage == "noImage.png")
+            {
+                <img src="~/Content/images/product/noImage.png" alt="image not found" height="346" width="250" />
+
+            }
+            else
+            {
+                <img src="~/Content/images/product/@Model.ProductImage" alt="@Model.Name" height="346" width="250"/>
+            }
+        </p>
+    </div>
+    <div id="tdRight">
+        <p>
+            @Html.DisplayNameFor(model => model.Price):
+            @Html.DisplayFor(model => model.Price)
+        </p>
+        <p>
+            @Html.DisplayNameFor(model => model.UnitsInStock):
+            @Html.DisplayFor(model => model.UnitsInStock)
+        </p>
+        <p>
+            @Html.DisplayNameFor(model => model.Category.CategoryName):
+            @Html.DisplayFor(model => model.Category.CategoryName)
+        </p>
+        <p>
+            @Html.DisplayNameFor(model => model.Status.StatusName):
+            @Html.DisplayFor(model => model.Status.StatusName)
+        </p>
+        <p>
+            @Html.DisplayNameFor(model => model.Description):
+            @Html.DisplayFor(model => model.Description)
+        </p>
+        @if (User.IsInRole("Admin") || User.IsInRole("Employee"))
+            {
+            <p>
+                @Html.DisplayNameFor(model => model.Notes):
+                @Html.DisplayFor(model => model.Notes)
+            </p>
+        }
+        <p>
+            @Html.DisplayNameFor(model => model.ReferenceURL):
+            @Html.DisplayFor(model => model.ReferenceURL)
+        </p>
+    </div>
+    <div class="clearfix"></div>
+    <div class="tileFooter">
+        <div id="tdFooterLeft">
+            <p style="text-shadow: 1.5px 1.5px #000;">
+                @*@Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) @:|*@
+                @Html.ActionLink("Modify","Edit",
+               new {id=Model.ProductID},
+               new
+               {
+                   @class = "btn btn-info",
+                   @style = "font-weight: bold"
+               })
+            </p>
+        </div>
+        <div id="tdFooterRight">
+            <p style="text-shadow: 1.5px 1.5px #000;">
+                @Html.ActionLink("Back to Products", "Index", "Products",
+               new { @class = "btn btn-primary", @style = "font-weight:bold" })
+                </p>
+</div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+@*@Html.DisplayNameFor(model => model.Name)
+    @Html.DisplayNameFor(model => model.ProductImage)
+    @Html.DisplayFor(model => model.ProductImage)*@
+

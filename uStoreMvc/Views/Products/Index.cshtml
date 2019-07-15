@@ -1,0 +1,120 @@
+﻿@model IEnumerable<UStoreMVC.Data.EF.Product>
+
+@{
+    ViewBag.Title = "Product Inventory";
+}
+
+<h2 id="inventoryTitle">@ViewBag.Title</h2>
+
+<!--Toggle Layout view button - from tiled products to product index list-->
+@*<p class="text-center" style="text-shadow:1.5px 1.5px #000;">
+        @Html.ActionLink("View Products (Tiled)", "TiledIndex", "Products",
+        new { @class = "btn btn-warning", @style = "font-weight: bold"})
+    </p>*@
+
+@if (User.IsInRole("Admin") || User.IsInRole("Employee"))
+{
+    <p id="inventoryCreateNew">
+        @Html.ActionLink("Add New Product", "Create")
+    </p>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UnitsInStock)
+            </th>
+            @if (User.IsInRole("Admin") || User.IsInRole("Employee"))
+            {
+                <th>
+                    @Html.DisplayNameFor(model => model.Notes)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ReferenceURL)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Category.CategoryName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status.StatusName)
+                </th>
+
+                <th style="width:10px"></th>//may need to remove or change
+            }
+        </tr>
+    </thead>
+    <tbody id="product-tbody">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @if (item.ProductImage == "noImage.png")
+                    {
+                        <img src="~/Content/images/product/noImage.png" alt="image not found" height="150" width="150"/>
+
+                    }
+                    else
+                    {
+                        <img src="~/Content/images/product/@item.ProductImage" alt="@item.Name" height="150" width="150"/>
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink(item.Name, "Details", new { id = item.ProductID })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UnitsInStock)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.ProductImage)
+                    </td>*@
+                @if (User.IsInRole("Admin") || User.IsInRole("Employee"))
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Notes)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ReferenceURL)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status.StatusName)
+                    </td>
+                }
+
+                <!--Nesting the if for this, remember it is still part of the same row. for the <TD>-->
+                @if (User.IsInRole("Admin") || User.IsInRole("Employee"))
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ProductID })
+
+                        @if (User.IsInRole("Admin"))
+                        {
+                            @:| @Html.ActionLink("Delete", "Delete", new { id = item.ProductID })
+                        }
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+@*@section Scripts{
+<script>
+    $(document).ready(function(){
+        $('.table').DataTable();
+    });
+    </script>
+}*@
